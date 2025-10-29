@@ -2,7 +2,6 @@ import os
 from typing import TypedDict, Annotated, List, Literal
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage, SystemMessage
 from langchain_groq import ChatGroq
-from langchain_community.tools.tavily_search import TavilySearchResults
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import create_react_agent
 from langgraph.checkpoint.memory import MemorySaver
@@ -12,6 +11,9 @@ from langgraph.prebuilt import ToolNode
 from langgraph.checkpoint.memory import MemorySaver
 from langchain.chat_models import init_chat_model
 from tools import search_web, write_summary
+# import gurardrails libraries
+from guardrails.hub import GibberishText
+from guardrails import Guard
 
 
 import os
@@ -19,9 +21,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# import gurardrails libraries
-from guardrails.hub import GibberishText
-from guardrails import Guard
 
 # Use the Guard with the validator
 guard = Guard().use(
